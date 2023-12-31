@@ -1,11 +1,17 @@
 package com.personal.spring.controller;
 
+import com.personal.spring.model.Response;
+import com.personal.spring.model.User;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.web.context.request.WebRequest;
 
 @Tag(name = "Api test", description = "Api test")
 public interface Controller {
   @Operation(method = "Test Operation", description = "Test")
-  Long getResponse(Long id, WebRequest request) throws Exception;
+  @ApiResponses({
+    @ApiResponse(responseCode = "200", description = "PDF Binary"),
+  })
+  Response<User> getResponse(Long id) throws Exception;
 }
